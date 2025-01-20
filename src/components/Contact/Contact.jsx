@@ -3,7 +3,16 @@ import { FaPhone } from "react-icons/fa6";
 import s from './Contact.module.css'
 
 
-const Contact = ({ data: { id, name, number }, onDelete }) => {
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contacts/actions";
+
+
+const Contact = ({ data: { id, name, number } }) => {
+
+    const dispatch = useDispatch();
+    const handleDelete = () => {
+        dispatch(deleteContact(id))
+    };
 
     return (
         <div className={s.card}>
@@ -11,7 +20,7 @@ const Contact = ({ data: { id, name, number }, onDelete }) => {
                 <p><FaUser className={s.text} size="18px" />{name}</p>
                 <p><FaPhone className={s.text} size="20px" />{number}</p>
             </div>
-            <button className={s.btn} onClick={() => onDelete(id)}>Delete</button>
+            <button className={s.btn} onClick={handleDelete}>Delete</button>
 
         </div>
     );
@@ -20,3 +29,8 @@ const Contact = ({ data: { id, name, number }, onDelete }) => {
 }
 
 export default Contact
+
+
+/*
+            <button className={s.btn} onClick={() => onDelete(id)}>Delete</button>
+*/
