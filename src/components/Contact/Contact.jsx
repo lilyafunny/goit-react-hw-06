@@ -4,7 +4,7 @@ import s from './Contact.module.css'
 
 
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contacts/actions";
+import { deleteContact } from "../../redux/contactsSlice";
 
 
 const Contact = ({ data: { id, name, number } }) => {
@@ -29,8 +29,3 @@ const Contact = ({ data: { id, name, number } }) => {
 }
 
 export default Contact
-
-
-/*
-            <button className={s.btn} onClick={() => onDelete(id)}>Delete</button>
-*/
